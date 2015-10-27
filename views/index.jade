@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    title Bollo Bot
+  body
+    h2 Welcome to Bollo Bot
+    hr
+    if serverStatus = "200"
+        h3 Bot server: Ok
+    h3!= botStatus
+    hr
+    h4!= date
+      

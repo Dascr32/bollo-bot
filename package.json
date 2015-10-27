@@ -1,0 +1,11 @@
+{
+  "name": "bollo-bot",
+  "description": "A Telegram bot for Bollo app",
+  "author": "Daniel Aguilar <dasgaskl@gmail.com>",
+  "dependencies": {
+    "jade": "1.11.x",
+    "moment": "2.10.x",
+    "telegram-api": "0.5.x"
+  },
+  "engine": "node >= 4.2.1"
+}
