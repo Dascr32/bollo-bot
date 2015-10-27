@@ -5,9 +5,6 @@ var http = require('http');
 var express = require('express');
 var router = express();
 
-// Date library
-var moment = require('moment');
-
 // Jade views directory & engine
 router.set('views', './views');
 router.set('view engine', 'jade');
@@ -15,6 +12,9 @@ router.set('view engine', 'jade');
 // Telegram api wrappers modules
 var Bot = require('telegram-api');
 var Message = require('telegram-api/types/Message');
+
+var commands = require('./commands');
+var utils = require('./utils');
 
 //===============================================================
 //                          Bollo Bot
@@ -36,15 +36,18 @@ startBot();
 
 // Bot commands
 bot.command('start', message => {
-    const start = new Message().text(`Hi!
-    You can integrate me in "Bollo App" in Tools/Telegram, if you have
-    already did that cool! Try some of my commands:
-    `);
-})
+    const start = new Message().text(commands.start());
+    bot.send(start.to(message.chat.id));
+});
 
 bot.command('botinfo', message => {
-    var answer = new Message().text('Hello, Sir').to(message.chat.id);
-    bot.send(answer);
+    const info = new Message().text(commands.botInfo());
+    bot.send(info.to(message.chat.id));
+});
+
+bot.command('echo', message => {
+    const msg = new Message().text(utils.getEchoMsg(message.text));
+    bot.send(msg.to(message.chat.id));
 });
 
 //===============================================================
@@ -54,7 +57,7 @@ bot.command('botinfo', message => {
 router.get('/', function (req, res) {
     var serverStat = res.statusCode;
     var botStat = "Bot status: " + botStatus;
-    var serverDate = getFormatedTime();
+    var serverDate = utils.formatedDate();
 
     res.render('index', {
         serverStatus: serverStat,
@@ -62,13 +65,6 @@ router.get('/', function (req, res) {
         date: serverDate
     });
 })
-
-function getFormatedTime() {
-    var date = moment(new Date());
-    var formateDate = date.format("D MMM YYYY HH:mm");
-
-    return formateDate;
-}
 
 // Server Port
 const PORT=3080;
