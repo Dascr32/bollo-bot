@@ -50,6 +50,11 @@ bot.command('echo', message => {
     bot.send(msg.to(message.chat.id));
 });
 
+bot.command('help', message => {
+    const msg = new Message().text(commands.help());
+    bot.send(msg.to(message.chat.id));
+});
+
 //===============================================================
 //                        Server Settings
 //===============================================================
