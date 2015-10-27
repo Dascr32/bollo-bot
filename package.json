@@ -3,6 +3,7 @@
   "description": "A Telegram bot for Bollo app",
   "author": "Daniel Aguilar <dasgaskl@gmail.com>",
   "dependencies": {
+    "express" : "4.13.x",
     "jade": "1.11.x",
     "moment": "2.10.x",
     "telegram-api": "0.5.x"
