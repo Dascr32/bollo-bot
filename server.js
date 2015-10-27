@@ -77,6 +77,6 @@ const PORT=3080;
 var server = http.createServer(router);
 
 // Start server
-server.listen(PORT, function() {
+server.listen(process.env.PORT || PORT, function() {
     console.log("Bollo Bot Server listening on: http://localhost:%s", PORT);
 });
