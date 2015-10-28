@@ -3,11 +3,15 @@ html(lang="en")
   head
     title Bollo Bot
   body
-    h2 Welcome to Bollo Bot
+    h2 Welcome to Bollo Bot v.!{version}
     hr
+    h3 Bot:
     if serverStatus = "200"
-        h3 Bot server: Ok
-    h3!= botStatus
+        p <strong>Server</strong>: Ok
+    p <strong>Status:</strong> !{botStatus}
+    p <strong>Time:</strong>  !{date}
+    p <strong>Current requests:</strong>  !{currentReq}
+    p <strong>Last hour requests:</strong> !{requests}
     hr
-    h4!= date
+    h4 Created by dascr32 | v.1.0
       

@@ -34,6 +34,11 @@ function startBot() {
 // Start bot
 startBot();
 
+// Register request for statistics
+bot.on('update', update => {
+  utils.registerRequest();
+});
+
 // Bot commands
 bot.command('start', message => {
     const start = new Message().text(commands.start());
@@ -61,13 +66,15 @@ bot.command('help', message => {
 
 router.get('/', function (req, res) {
     var serverStat = res.statusCode;
-    var botStat = "Bot status: " + botStatus;
     var serverDate = utils.formatedDate();
 
     res.render('index', {
         serverStatus: serverStat,
-        botStatus: botStat,
-        date: serverDate
+        botStatus: botStatus,
+        date: serverDate,
+        version: utils.BOT_VERSION,
+        requests: utils.getLastHourRqCount(),
+        currentReq: utils.getCurrentRqCount()
     });
 })
 
