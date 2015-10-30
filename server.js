@@ -29,12 +29,13 @@ var bot = new Bot ({
 function startBot() {
     bot.start();
     botStatus = "Running";
+    utils.setStartTime(utils.getHour());
 }
 
 // Start bot
 startBot();
 
-// Register request for statistics
+// Register request for statstics
 bot.on('update', update => {
   utils.registerRequest();
 });
@@ -69,7 +70,6 @@ router.get('/', function (req, res) {
     var serverDate = utils.formatedDate();
 
     res.render('index', {
-        serverStatus: serverStat,
         botStatus: botStatus,
         date: serverDate,
         version: utils.BOT_VERSION,
