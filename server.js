@@ -51,6 +51,13 @@ bot.command('botinfo', message => {
     bot.send(info.to(message.chat.id));
 });
 
+bot.command('bakeries', message => {
+    commands.bakeryStatus(function(msg) {
+        const bakes = new Message().text(msg);
+        bot.send(bakes.to(message.chat.id));
+    });
+});
+
 bot.command('echo', message => {
     const msg = new Message().text(utils.getEchoMsg(message.text));
     bot.send(msg.to(message.chat.id));
@@ -73,8 +80,7 @@ router.get('/', function (req, res) {
         botStatus: botStatus,
         date: serverDate,
         version: utils.BOT_VERSION,
-        requests: utils.getLastHourRqCount(),
-        currentReq: utils.getCurrentRqCount()
+        requests: utils.getRequestCount()
     });
 })
 

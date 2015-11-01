@@ -1,9 +1,7 @@
 // Date library
 var moment = require('moment');
 
-var lastRqCount = 0;
-var currentHourRqCount = 0;
-var lastHour = 00;
+var requestCount = 0;
 var startTime;
 
 module.exports = {
@@ -32,26 +30,10 @@ module.exports = {
     },
 
     registerRequest: function () {
-        if (lastHour == 00) {
-            lastHour = this.getHour();
-        }
-
-        if (lastHour == this.getHour()) {
-            currentHourRqCount++;
-        }
-
-        else if (lastHour < this.getHour()) {
-            lastRqCount = currentHourRqCount;
-            currentHourRqCount = 0;
-            lastHour = this.getHour();
-        }
+        requestCount++;
     },
 
-    getLastHourRqCount() {
-        return lastRqCount;
-    },
-
-    getCurrentRqCount() {
-        return currentHourRqCount;
+    getRequestCount() {
+        return requestCount;
     }
 };
