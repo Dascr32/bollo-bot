@@ -6,7 +6,8 @@
     "express" : "4.13.x",
     "jade": "1.11.x",
     "moment": "2.10.x",
-    "telegram-api": "0.5.x"
+    "telegram-api": "0.5.x",
+    "node-emoji": "1.0.x"
   },
   "engine": "node >= 4.2.1"
 }

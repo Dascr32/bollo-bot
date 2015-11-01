@@ -1,12 +1,17 @@
 // Date library
 var moment = require('moment');
 
+// Emoji library
+var emoji = require('node-emoji');
+
 var requestCount = 0;
 var startTime;
 
 module.exports = {
 
-    BOT_VERSION: '1.0',
+    BOT_VERSION: '1.1.2',
+    SAD_EMOJI: emoji.get(":pensive:"),
+    GRIN_EMOJI: emoji.get(":grin:"),
 
     formatedDate: function() {
         var date = moment(new Date());
