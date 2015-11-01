@@ -1,11 +1,11 @@
 var http = require('http');
 
-var STATUS = {
+const STATUS = {
     host: '104.197.97.146',
     path: '/bollo_web/api/v1/bakeries/status.php?id='
 };
 
-var  BAKERIES_ALL = {
+const  BAKERIES_ALL = {
     host: '104.197.97.146',
     path: '/bollo_web/api/v1/bakeries/bakery.php?all'
 };
@@ -29,7 +29,8 @@ exports.getBakeries = function(callback) {
 };
 
 exports.getStatus = function(id, callback) {
-    STATUS.path += id;
+    var STATUS_ID = STATUS;
+    STATUS_ID.path = "/bollo_web/api/v1/bakeries/status.php?id=" + id;
     http.get(STATUS, function(response) {
         var body = '';
         response.on('data', function(d) {
