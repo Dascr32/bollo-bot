@@ -1,12 +1,12 @@
 var http = require('http');
 
 const STATUS = {
-    host: '104.197.97.146',
+    host: 'bollo-server.bitnamiapp.com',
     path: '/bollo_web/api/v1/bakeries/status.php?id='
 };
 
 const  BAKERIES_ALL = {
-    host: '104.197.97.146',
+    host: 'bollo-server.bitnamiapp.com',
     path: '/bollo_web/api/v1/bakeries/bakery.php?all'
 };
 
@@ -16,7 +16,6 @@ exports.getBakeries = function(callback) {
         response.on('data', function(d) {
             body += d;
         });
-
         response.on('end', function() {
             var parsedData = JSON.parse(body);
             callback ({
@@ -36,7 +35,6 @@ exports.getStatus = function(id, callback) {
         response.on('data', function(d) {
             body += d;
         });
-
         response.on('end', function() {
             var parsedData = JSON.parse(body);
             callback ({
