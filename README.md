@@ -7,7 +7,14 @@ Simple Telegram Bot used in integration with [Bollo App](https://github.com/rich
 </p>
 
 ##Command List
-Coming Soon!
+| Command             | Description          |
+|:-------------------:|:--------------------:|
+| /id                 | Your chat id         |
+| /bakeries           | All your bakeries    |
+| /status <bakery-id> | Bakery status        |
+| /botinfo            | About the bot        |
+| /echo               | I repeat what you say|
+| /help               | A little bit of help.|
 
 ##Usage
 First install dependencies
@@ -27,7 +34,7 @@ If everything went well the bot will be good to go :P
 ##Dependencies
 
 | Module       | Version |
-|:------------:|:--------:
+|:------------:|:-------:|
 | Express      | 4.13.x  |
 | Jade         | 1.11.x  |
 | Moment       | 2.10.x  |
