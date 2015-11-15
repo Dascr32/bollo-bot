@@ -39,7 +39,7 @@ exports.getStatus = function(id, callback) {
             var parsedData = JSON.parse(body);
             callback ({
                 code: parsedData.code,
-                progress: parsedData.progress,
+                progress: parsedData.progress % 100,
                 status: parsedData.status
             });
         });

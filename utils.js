@@ -9,7 +9,7 @@ var startTime;
 
 module.exports = {
 
-    BOT_VERSION: '1.1.2',
+    BOT_VERSION: '1.1.3',
     SAD_EMOJI: emoji.get(":pensive:"),
     GRIN_EMOJI: emoji.get(":grin:"),
 
@@ -25,8 +25,8 @@ module.exports = {
     },
 
     getEchoMsg: function (message) {
-        var echoComandLength = 5;
-        var msg = message.substr(echoComandLength, message.length);
+        var echoLength = 5;
+        var msg = message.substr(echoLength, message.length);
         return msg;
     },
 

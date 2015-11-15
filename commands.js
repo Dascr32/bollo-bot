@@ -3,7 +3,7 @@ var request = require('./request');
 
 var commandList = "\n- /id - Your chat id."
 + "\n- /bakeries - All your bakeries."
-+ "\n- /status <bakery-id> - Get your bakery status."
++ "\n- /status <bakery-id> - Bakery status."
 + "\n- /botinfo - About me."
 + "\n- /echo - I repeat what you say."
 + "\n- /help - A little bit of help."
@@ -20,7 +20,7 @@ module.exports = {
 
     botInfo: function() {
         var message = "Date: " + utils.formatedDate() +
-        "\n------------------------------\nCreated by: Daniel Aguilar" +
+        "\nCreated by: Dascr32" +
         "\nVersion: " + utils.BOT_VERSION;
         return message;
     },
@@ -47,10 +47,11 @@ module.exports = {
                     message += "\n* " + list[i].name + " (" + list[i].city + ")";
                     message += "\nId: " + list[i].id;
                     message += "\nStock: " + list[i].stock;
+                    message += "\nStatus: " + list[i].status + "\n";
                 }
             }
             else {
-                message = "Opps, you dont have registered bakeries";
+                message = "Opps, you dont have registered bakeries.";
             }
             callback (message);
         });
@@ -60,9 +61,9 @@ module.exports = {
         var message;
         request.getStatus(id, bakeryStatus => {
             if (bakeryStatus.code != 1) {
-                message = "* Bakery id #" + id +
-                "\n- Status: " + bakeryStatus.status + "\n- Progress: " +
-                bakeryStatus.progress + "%";
+                message = "* Bakery id #" + id
+                + "\n- Status: " + bakeryStatus.status
+                + "\n- Progress: " + bakeryStatus.progress + "%";
             }
             else {
                 message = "There is no bakery with that id. " + utils.GRIN_EMOJI;
